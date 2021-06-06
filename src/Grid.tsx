@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Button } from "@material-ui/core";
 
 import { RootState } from "./reducers/store";
 import "./scss/grid.scss";
@@ -38,41 +39,58 @@ const Grid: React.FC = (props) => {
           }
         })}
       </div>
-      <button
-        onClick={() => {
-          randomize();
-        }}
-      >
-        Randomize
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: "DOWN" });
-        }}
-      >
-        DOWN
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: "LEFT" });
-        }}
-      >
-        LEFT
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: "RIGHT" });
-        }}
-      >
-        RIGHT
-      </button>
-      <button
-        onClick={() => {
-          dispatch({ type: "UP" });
-        }}
-      >
-        UP
-      </button>
+      <div className="controls">
+        <Button
+          className="randomize button"
+          variant="contained"
+          color="secondary"
+          onClick={() => {
+            randomize();
+          }}
+        >
+          Randomize
+        </Button>
+        <Button
+          className="up button"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            dispatch({ type: "UP" });
+          }}
+        >
+          UP
+        </Button>
+        <Button
+          className="left button"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            dispatch({ type: "LEFT" });
+          }}
+        >
+          LEFT
+        </Button>
+        <Button
+          className="right button"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            dispatch({ type: "RIGHT" });
+          }}
+        >
+          RIGHT
+        </Button>
+        <Button
+          className="down button"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            dispatch({ type: "DOWN" });
+          }}
+        >
+          DOWN
+        </Button>
+      </div>
     </>
   );
 };
