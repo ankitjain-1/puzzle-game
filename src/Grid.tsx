@@ -1,42 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
+import { RootState } from "./reducers/store";
 import "./scss/grid.scss";
 
 const Grid: React.FC = (props) => {
-  let arr: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 0];
-  console.log(arr);
+  // let arr: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+  // const [gridNums, setGridNums] = useState(arr);
+  const gridNums = useSelector((state: RootState) => state.gridNums);
+
+  const dispatch = useDispatch();
 
   const randomize = () => {
-    // curr position can be swapped with these postions
-    const posArr = [-1, 3, 1, -3];
-
-    // curr position of blank space
-    const pos = arr.findIndex((item) => item === 0);
-    console.log("pos", pos);
-
-    // generate random number
-    const rand = Math.floor(Math.random() * 3);
-    console.log("rand", rand);
-
-    // new position of blank space
-    const newPos = pos - posArr[rand];
-    console.log("newPos", newPos);
-
-    // swapping curr position arr element with new position element
-    if (arr[newPos]) {
-      let temp = arr[pos];
-      arr[pos] = arr[newPos]
-      arr[newPos] = temp;
-      // arr[pos], arr[newPos] = arr[newPos], arr[pos];
+    for (let i = 0; i < 100; i++) {
+      setTimeout(() => {
+        dispatch({ type: "RANDOMIZE" });
+      }, 10);
     }
-
-    console.log(arr);
   };
+
+  useEffect(() => {
+    console.log("gridNums updated", gridNums);
+  }, [gridNums]);
 
   return (
     <>
       <div className="grid">
-        {arr.map((item) => {
+        {gridNums.map((item) => {
           if (item !== 0) {
             return (
               <div key={item} className="grid-item">
@@ -53,7 +43,35 @@ const Grid: React.FC = (props) => {
           randomize();
         }}
       >
-        Random
+        Randomize
+      </button>
+      <button
+        onClick={() => {
+          dispatch({ type: "DOWN" });
+        }}
+      >
+        DOWN
+      </button>
+      <button
+        onClick={() => {
+          dispatch({ type: "LEFT" });
+        }}
+      >
+        LEFT
+      </button>
+      <button
+        onClick={() => {
+          dispatch({ type: "RIGHT" });
+        }}
+      >
+        RIGHT
+      </button>
+      <button
+        onClick={() => {
+          dispatch({ type: "UP" });
+        }}
+      >
+        UP
       </button>
     </>
   );
