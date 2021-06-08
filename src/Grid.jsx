@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
 
-import { RootState } from "./reducers/store";
 import "./scss/grid.scss";
 
-const Grid: React.FC = (props) => {
+const Grid = () => {
   // let arr: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 0];
   // const [gridNums, setGridNums] = useState(arr);
-  const gridNums = useSelector((state: RootState) => state.gridNums);
+  const gridNums = useSelector((state) => state.gridNums);
 
   const dispatch = useDispatch();
 
@@ -16,7 +15,7 @@ const Grid: React.FC = (props) => {
     for (let i = 0; i < 100; i++) {
       setTimeout(() => {
         dispatch({ type: "RANDOMIZE" });
-      }, 10);
+      }, i * 20);
     }
   };
 

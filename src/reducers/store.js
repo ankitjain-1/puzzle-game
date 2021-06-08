@@ -1,18 +1,9 @@
-interface State {
-  gridNums: Array<number>;
-  pos: number;
-}
-
-interface Action {
-  type: String;
-}
-
 const initialState = {
   gridNums: [1, 2, 3, 4, 5, 6, 7, 8, 0],
   pos: 8,
 };
 
-const rootReducers = (state: State = initialState, action: Action) => {
+const rootReducers = (state = initialState, action) => {
   const { gridNums, pos } = state;
 
   switch (action.type) {
@@ -118,5 +109,4 @@ const rootReducers = (state: State = initialState, action: Action) => {
   }
 };
 
-export type RootState = ReturnType<typeof rootReducers>;
 export default rootReducers;
