@@ -20,7 +20,6 @@ const Grid = () => {
   };
 
   useEffect(() => {
-    console.log("gridNums updated", gridNums);
   }, [gridNums]);
 
   return (

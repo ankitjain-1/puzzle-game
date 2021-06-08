@@ -11,21 +11,14 @@ const rootReducers = (state = initialState, action) => {
       // curr position can be swapped with these postions
       const posArr = [-1, -3, 1, 3];
 
-      // curr position of blank space
-      // const pos = gridNums.findIndex((item) => item === 0);
-      console.log("pos", pos);
-
       // generate random number between 0 and 3
       const rand = Math.floor(Math.random() * 4);
-      console.log("rand", rand);
 
       // change in position
       const change = posArr[rand];
-      // new position of blank space
-      console.log("posChange", change);
 
+      // new position of blank space
       const newPos = pos + change;
-      console.log("newPos", newPos);
 
       // swapping curr position arr element with new position element
       const getCondition = () => {
@@ -35,11 +28,7 @@ const rootReducers = (state = initialState, action) => {
       };
       if (gridNums[newPos] && getCondition()) {
         let newArr = [...gridNums];
-        console.log("newARrBefore", newArr);
         [newArr[pos], newArr[newPos]] = [newArr[newPos], newArr[pos]];
-        console.log("newARrAfter", newArr);
-        console.log("gridNumsBefore", gridNums);
-        // dispatch([...newArr]);
         return {
           ...state,
           pos: newPos,
