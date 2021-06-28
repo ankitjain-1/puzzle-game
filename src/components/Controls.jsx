@@ -1,14 +1,7 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Button } from "@material-ui/core";
 
-import "./scss/grid.scss";
-
-const Grid = () => {
-  // let arr: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 0];
-  // const [gridNums, setGridNums] = useState(arr);
-  const gridNums = useSelector((state) => state.gridNums);
-
+const Controls = () => {
   const dispatch = useDispatch();
 
   const randomize = () => {
@@ -19,24 +12,8 @@ const Grid = () => {
     }
   };
 
-  useEffect(() => {
-  }, [gridNums]);
-
   return (
     <>
-      <div className="grid">
-        {gridNums.map((item) => {
-          if (item !== 0) {
-            return (
-              <div key={item} className="grid-item">
-                {item}
-              </div>
-            );
-          } else {
-            return <div key={item} className="empty"></div>;
-          }
-        })}
-      </div>
       <div className="controls">
         <Button
           className="randomize button"
@@ -93,4 +70,4 @@ const Grid = () => {
   );
 };
 
-export default Grid;
+export default Controls;
