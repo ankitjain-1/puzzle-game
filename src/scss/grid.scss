@@ -9,6 +9,14 @@
   grid-template-columns: repeat(3, 1fr);
   width: 300px;
   border: 1px solid black;
+  &.level-4 {
+    grid-template-columns: repeat(4, 1fr);
+    width: 400px;
+  }
+  &.level-5 {
+    grid-template-columns: repeat(5, 1fr);
+    width: 500px;
+  }
   .grid-item {
     border: 1px solid black;
     width: 100px;

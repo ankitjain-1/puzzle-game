@@ -5,12 +5,13 @@ import "./../scss/grid.scss";
 
 const Grid = () => {
   const gridNums = useSelector((state) => state.gridNums);
+  const level = useSelector((state) => state.level);
 
   useEffect(() => {}, [gridNums]);
 
   return (
     <>
-      <div className="grid">
+      <div className={`grid level-${level}`}>
         {gridNums.map((item) => {
           if (item !== 0) {
             return (
