@@ -1,11 +1,14 @@
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
 
 const Controls = () => {
   const dispatch = useDispatch();
 
+  const level = useSelector((state) => state.level);
+
   const randomize = () => {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 100 * (level - 2); i++) {
       setTimeout(() => {
         dispatch({ type: "RANDOMIZE" });
       }, i * 20);
@@ -30,7 +33,6 @@ const Controls = () => {
           variant="contained"
           color="primary"
           onClick={() => {
-            console.log('up clicked');
             dispatch({ type: "UP" });
           }}
         >
