@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import "./../scss/grid.scss";
 
 const Grid = () => {
-  // let arr: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 0];
-  // const [gridNums, setGridNums] = useState(arr);
   const gridNums = useSelector((state) => state.gridNums);
 
   useEffect(() => {}, [gridNums]);

@@ -30,6 +30,7 @@ const Controls = () => {
           variant="contained"
           color="primary"
           onClick={() => {
+            console.log('up clicked');
             dispatch({ type: "UP" });
           }}
         >

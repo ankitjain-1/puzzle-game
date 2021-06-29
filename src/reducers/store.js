@@ -1,17 +1,18 @@
 const initialState = {
   gridNums: [1, 2, 3, 4, 5, 6, 7, 8, 0],
   pos: 8,
+  level: 3,
 };
 
 const rootReducers = (state = initialState, action) => {
-  const { gridNums, pos } = state;
+  const { gridNums, pos, level } = state;
 
   switch (action.type) {
     case "RANDOMIZE": {
       // curr position can be swapped with these postions
-      const posArr = [-1, -3, 1, 3];
+      const posArr = [-1, -level, 1, level];
 
-      // generate random number between 0 and 3
+      // generate random number between 0 and level
       const rand = Math.floor(Math.random() * 4);
 
       // change in position
@@ -22,8 +23,8 @@ const rootReducers = (state = initialState, action) => {
 
       // swapping curr position arr element with new position element
       const getCondition = () => {
-        if ((pos + 1) % 3 === 0 && change === 1) return false;
-        else if (pos % 3 === 0 && change === -1) return false;
+        if ((pos + 1) % level === 0 && change === 1) return false;
+        else if (pos % level === 0 && change === -1) return false;
         else return true;
       };
       if (gridNums[newPos] && getCondition()) {
@@ -38,22 +39,39 @@ const rootReducers = (state = initialState, action) => {
       return state;
     }
 
+    case "LEVEL_CHANGE": {
+      console.log(action.level);
+      const newArr = [];
+      for (let i = 1; i < action.level * action.level; i++) {
+        newArr.push(i);
+      }
+      newArr.push(0);
+      return {
+        // ...state,
+        level: action.level,
+        gridNums: newArr,
+        pos: action.pos,
+      };
+    }
+
     case "UP": {
+      console.log("up triggered");
       const newArr = [...gridNums];
-      const newPos = pos - 3;
+      const newPos = pos - level;
       if (gridNums[newPos]) {
         [newArr[pos], newArr[newPos]] = [newArr[newPos], newArr[pos]];
+        return {
+          ...state,
+          pos: newPos,
+          gridNums: newArr,
+        };
       }
-      return {
-        ...state,
-        pos: newPos,
-        gridNums: newArr,
-      };
+      return state;
     }
 
     case "DOWN": {
       const newArr = [...gridNums];
-      const newPos = pos + 3;
+      const newPos = pos + level;
       if (gridNums[newPos]) {
         [newArr[pos], newArr[newPos]] = [newArr[newPos], newArr[pos]];
         return {
@@ -68,7 +86,7 @@ const rootReducers = (state = initialState, action) => {
     case "LEFT": {
       const newArr = [...gridNums];
       const newPos = pos - 1;
-      if (gridNums[newPos] && pos % 3 !== 0) {
+      if (gridNums[newPos] && pos % level !== 0) {
         [newArr[pos], newArr[newPos]] = [newArr[newPos], newArr[pos]];
         return {
           ...state,
@@ -82,7 +100,7 @@ const rootReducers = (state = initialState, action) => {
     case "RIGHT": {
       const newArr = [...gridNums];
       const newPos = pos + 1;
-      if (gridNums[newPos] && (pos + 1) % 3 !== 0) {
+      if (gridNums[newPos] && (pos + 1) % level !== 0) {
         [newArr[pos], newArr[newPos]] = [newArr[newPos], newArr[pos]];
         return {
           ...state,
