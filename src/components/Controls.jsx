@@ -15,6 +15,25 @@ const Controls = () => {
     }
   };
 
+  document.onkeydown = (event) => {
+    switch (event.code) {
+      case "ArrowLeft":
+        dispatch({ type: "LEFT" });
+        break;
+      case "ArrowUp":
+        dispatch({ type: "UP" });
+        break;
+      case "ArrowRight":
+        dispatch({ type: "RIGHT" });
+        break;
+      case "ArrowDown":
+        dispatch({ type: "DOWN" });
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <div className="controls">
