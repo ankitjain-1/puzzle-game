@@ -40,7 +40,6 @@ const rootReducers = (state = initialState, action) => {
     }
 
     case "LEVEL_CHANGE": {
-      console.log(action.level);
       const newArr = [];
       for (let i = 1; i < action.level * action.level; i++) {
         newArr.push(i);
@@ -55,7 +54,6 @@ const rootReducers = (state = initialState, action) => {
     }
 
     case "UP": {
-      console.log("up triggered");
       const newArr = [...gridNums];
       const newPos = pos - level;
       if (gridNums[newPos]) {

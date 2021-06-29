@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GamePage from "./components/GamePage";
 import LandingPage from "./components/LandingPage";
+import './scss/Global.scss';
 
 function App() {
   return (

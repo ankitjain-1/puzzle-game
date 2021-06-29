@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import "./../scss/grid.scss";
+import "./../scss/Grid.scss";
 
 const Grid = () => {
   const gridNums = useSelector((state) => state.gridNums);
@@ -20,7 +20,7 @@ const Grid = () => {
               </div>
             );
           } else {
-            return <div key={item} className="empty"></div>;
+            return <div key={item} className=" grid-item empty"></div>;
           }
         })}
       </div>
