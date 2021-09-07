@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { Button } from "@material-ui/core";
+import './../scss/Control.scss';
 
 const Controls = () => {
   const dispatch = useDispatch();
@@ -8,10 +8,11 @@ const Controls = () => {
   const level = useSelector((state) => state.level);
 
   const randomize = () => {
+    // dispatch({ type: "IS_COLLAPSED" });
     for (let i = 0; i < 100 * (level - 2); i++) {
       setTimeout(() => {
         dispatch({ type: "RANDOMIZE" });
-      }, i * 20);
+      }, 10);
     }
   };
 
@@ -37,7 +38,7 @@ const Controls = () => {
   return (
     <>
       <div className="controls">
-        <Button
+        <button
           className="randomize button"
           variant="contained"
           color="secondary"
@@ -46,8 +47,8 @@ const Controls = () => {
           }}
         >
           Randomize
-        </Button>
-        <Button
+        </button>
+        <button
           className="up button"
           variant="contained"
           color="primary"
@@ -56,8 +57,8 @@ const Controls = () => {
           }}
         >
           UP
-        </Button>
-        <Button
+        </button>
+        <button
           className="left button"
           variant="contained"
           color="primary"
@@ -66,8 +67,8 @@ const Controls = () => {
           }}
         >
           LEFT
-        </Button>
-        <Button
+        </button>
+        <button
           className="right button"
           variant="contained"
           color="primary"
@@ -76,8 +77,8 @@ const Controls = () => {
           }}
         >
           RIGHT
-        </Button>
-        <Button
+        </button>
+        <button
           className="down button"
           variant="contained"
           color="primary"
@@ -86,7 +87,7 @@ const Controls = () => {
           }}
         >
           DOWN
-        </Button>
+        </button>
       </div>
     </>
   );

@@ -6,6 +6,7 @@ import "./../scss/Grid.scss";
 const Grid = () => {
   const gridNums = useSelector((state) => state.gridNums);
   const level = useSelector((state) => state.level);
+  const isCollapsed = useSelector((state) => state.isCollapsed);
 
   useEffect(() => {}, [gridNums]);
 
@@ -15,12 +16,20 @@ const Grid = () => {
         {gridNums.map((item) => {
           if (item !== 0) {
             return (
-              <div key={item} className="grid-item">
+              <div
+                key={item}
+                className={`grid-item ${isCollapsed ? "collapsed" : ""}`}
+              >
                 {item}
               </div>
             );
           } else {
-            return <div key={item} className=" grid-item empty"></div>;
+            return (
+              <div
+                key={item}
+                className={`grid-item empty ${isCollapsed ? "collapsed" : ""}`}
+              ></div>
+            );
           }
         })}
       </div>

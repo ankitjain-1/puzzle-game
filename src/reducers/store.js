@@ -2,10 +2,11 @@ const initialState = {
   gridNums: [1, 2, 3, 4, 5, 6, 7, 8, 0],
   pos: 8,
   level: 3,
+  isCollapsed: false,
 };
 
 const rootReducers = (state = initialState, action) => {
-  const { gridNums, pos, level } = state;
+  const { gridNums, pos, level, isCollapsed } = state;
 
   switch (action.type) {
     case "RANDOMIZE": {
@@ -51,6 +52,10 @@ const rootReducers = (state = initialState, action) => {
         gridNums: newArr,
         pos: action.pos,
       };
+    }
+
+    case "IS_COLLAPSED": {
+      return { ...state, isCollapsed: !isCollapsed };
     }
 
     case "UP": {

@@ -24,9 +24,9 @@
 
 .landing-page {
   // z-index: 1000;
-  background-color: turquoise;
-  width: 100vw;
-  height: 100vh;
+  // background-color: turquoise;
+  // width: 100vw;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,9 +40,12 @@
     font-family: Kalam;
     margin: 30px;
   }
-  
+  a {
+    text-decoration: none;
+  }
   .play-button {
-    background-color: yellowgreen;
+    color: white;
+    background-color: #a31e46;
     font-family: "Fontdiner Swanky";
     font-size: 20px;
     letter-spacing: 2px;

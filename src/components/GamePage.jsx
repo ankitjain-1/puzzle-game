@@ -4,11 +4,11 @@ import Level from "./Level";
 
 const GamePage = () => {
   return (
-    <div>
+    <>
       <Level />
       <GameGrid />
       <Controls />
-    </div>
+    </>
   );
 };
 
